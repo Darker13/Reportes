@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report7" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6d044508-48ad-44dd-9812-508bc5416d98">
+	<property name="template.type" value="columnar"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="38"/>
+	<style name="Title" forecolor="#000000" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="id" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     asignado.`asignado` AS asignado_asignado,
+     estado.`Estado` AS estado_Estado,
+     incidencia.`idINCIDENCIA` AS incidencia_idINCIDENCIA,
+     incidencia.`fecha_hora` AS incidencia_fecha_hora,
+     incidencia.`TituloIncidente` AS incidencia_TituloIncidente,
+     incidencia.`Descripcion` AS incidencia_Descripcion,
+     incidencia.`USUARIO_id_documento` AS incidencia_USUARIO_id_documento,
+     incidencia.`Nivel_idNivel` AS incidencia_Nivel_idNivel,
+     incidencia.`Estado_idEstado` AS incidencia_Estado_idEstado,
+     incidencia.`Asignado_idAsignado` AS incidencia_Asignado_idAsignado,
+     incidencia.`Tipo_Daño_idTipo_Daño` AS incidencia_Tipo_Daño_idTipo_Daño,
+     nivel.`Prioridad` AS nivel_Prioridad,
+     solucionincidente.`idSolucionIncidente` AS solucionincidente_idSolucionIncidente,
+     solucionincidente.`Fecha_Solucion` AS solucionincidente_Fecha_Solucion,
+     solucionincidente.`Reg_Solucion` AS solucionincidente_Reg_Solucion,
+     solucionincidente.`Comentarios` AS solucionincidente_Comentarios,
+     solucionincidente.`incidencia_idINCIDENCIA` AS solucionincidente_incidencia_idINCIDENCIA,
+     tipo_daño.`Daño` AS tipo_daño_Daño,
+     usuario.`Nombre` AS usuario_Nombre,
+     usuario.`Apellido` AS usuario_Apellido,
+     usuario.`Telefono` AS usuario_Telefono,
+     usuario.`Cargo` AS usuario_Cargo
+FROM
+     `asignado` asignado INNER JOIN `incidencia` incidencia ON asignado.`idAsignado` = incidencia.`Asignado_idAsignado`
+     INNER JOIN `estado` estado ON incidencia.`Estado_idEstado` = estado.`idEstado`
+     INNER JOIN `nivel` nivel ON incidencia.`Nivel_idNivel` = nivel.`idNivel`
+     INNER JOIN `solucionincidente` solucionincidente ON incidencia.`idINCIDENCIA` = solucionincidente.`incidencia_idINCIDENCIA`
+     INNER JOIN `tipo_daño` tipo_daño ON incidencia.`Tipo_Daño_idTipo_Daño` = tipo_daño.`idTipo_Daño`
+     INNER JOIN `usuario` usuario ON incidencia.`USUARIO_id_documento` = usuario.`id_documento`
+WHERE idSolucionIncidente=$P{id}]]>
+	</queryString>
+	<field name="asignado_asignado" class="java.lang.String"/>
+	<field name="estado_Estado" class="java.lang.String"/>
+	<field name="incidencia_idINCIDENCIA" class="java.lang.Integer"/>
+	<field name="incidencia_fecha_hora" class="java.lang.String"/>
+	<field name="incidencia_TituloIncidente" class="java.lang.String"/>
+	<field name="incidencia_Descripcion" class="java.lang.String"/>
+	<field name="incidencia_USUARIO_id_documento" class="java.lang.Integer"/>
+	<field name="incidencia_Nivel_idNivel" class="java.lang.Integer"/>
+	<field name="incidencia_Estado_idEstado" class="java.lang.Integer"/>
+	<field name="incidencia_Asignado_idAsignado" class="java.lang.Integer"/>
+	<field name="incidencia_Tipo_Daño_idTipo_Daño" class="java.lang.Integer"/>
+	<field name="nivel_Prioridad" class="java.lang.String"/>
+	<field name="solucionincidente_idSolucionIncidente" class="java.lang.Integer"/>
+	<field name="solucionincidente_Fecha_Solucion" class="java.lang.String"/>
+	<field name="solucionincidente_Reg_Solucion" class="java.lang.String"/>
+	<field name="solucionincidente_Comentarios" class="java.lang.String"/>
+	<field name="solucionincidente_incidencia_idINCIDENCIA" class="java.lang.Integer"/>
+	<field name="tipo_daño_Daño" class="java.lang.String"/>
+	<field name="usuario_Nombre" class="java.lang.String"/>
+	<field name="usuario_Apellido" class="java.lang.String"/>
+	<field name="usuario_Telefono" class="java.lang.String"/>
+	<field name="usuario_Cargo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="120" y="10" width="435" height="93" uuid="db4e8738-1e91-4a35-8070-5780224c5afb"/>
+				<textElement>
+					<font size="58" isBold="false"/>
+				</textElement>
+				<text><![CDATA[clinca navarra]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="98" y="112" width="131" height="18" uuid="9b4cbbb6-ae5c-455c-8ae2-b1624ce6d799"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuario_Nombre}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="229" y="112" width="148" height="18" uuid="e696b43e-88be-4982-be73-cbcf940c3be7"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuario_Apellido}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="0" y="112" width="88" height="20" forecolor="#000000" uuid="3e5cc4f9-6fc7-4c6f-b2b0-2e11d8fc3fcc"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Solicitado por:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="383" y="112" width="52" height="20" forecolor="#000000" uuid="b3fba069-af35-45af-9350-816aa8719d3e"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Cargo]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="447" y="112" width="106" height="18" uuid="49c76e6d-251a-467e-b477-12e4d3e2c06c"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuario_Cargo}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="4" y="22" width="100" height="70" uuid="c72cf32c-1c65-4e33-b151-d9e5210a0cf2"/>
+				<imageExpression><![CDATA["C:\\Users\\Darker\\Desktop\\logos_clientes_clinicavascularnavarra.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="360" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="132" y="10" width="69" height="20" forecolor="#000000" uuid="c531a636-73bb-4bf0-b7e7-6bf01d66aee8"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[asignado a:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="212" y="10" width="184" height="18" uuid="84723c92-3afc-451d-b016-b488b7883d36"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{asignado_asignado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="229" y="29" width="47" height="20" forecolor="#000000" uuid="70029936-a0d5-4bbd-8888-9b377edd3a0c"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Estado:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="304" y="29" width="73" height="18" uuid="86f586c4-6cb0-4cc4-b2e8-fcf998e4cd99"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estado_Estado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="0" y="10" width="25" height="19" forecolor="#000000" uuid="12ed7071-67b5-4185-b49c-2a1c543e1a5f"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Id:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="39" y="10" width="65" height="18" uuid="bfdbb2d1-d20d-4a5c-8fd8-cc4ce37a4701"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incidencia_idINCIDENCIA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="0" y="31" width="44" height="20" forecolor="#000000" uuid="baa2ec1a-c138-42e4-9091-574cfcf86170"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="55" y="31" width="146" height="18" uuid="e01dadd1-303b-4434-a84b-99b3982973f7"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incidencia_fecha_hora}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="0" y="53" width="46" height="20" forecolor="#000000" uuid="5a1f5ec9-dcf4-45b9-b20d-fd353a7abe51"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Titulo:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="55" y="53" width="286" height="18" uuid="afa6db14-684f-4dc3-a0c2-2abd864190ff"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incidencia_TituloIncidente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="0" y="78" width="79" height="20" forecolor="#000000" uuid="ee9cc76c-7a8a-4d8a-819d-7fb3566b67f5"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Descripcion:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="79" y="78" width="468" height="65" uuid="5416fe3c-2720-45d6-86df-096f63218f13"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incidencia_Descripcion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="423" y="8" width="39" height="18" forecolor="#000000" uuid="3d9c8bd9-4f5e-4ac1-a776-86af240be5e4"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[nivel:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="484" y="8" width="69" height="18" uuid="4707211c-eee7-43f0-94bb-7b30f76ad121"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nivel_Prioridad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="2" y="174" width="98" height="20" forecolor="#000000" uuid="68b1ecd8-9d50-4fbc-800c-08f301999254"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fecha Solucion:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="117" y="174" width="241" height="18" uuid="265ac47f-2f06-4420-87b2-3248516874b0"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solucionincidente_Fecha_Solucion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="2" y="209" width="63" height="20" forecolor="#000000" uuid="3d9faab5-f277-4fca-b069-909ce75d8a58"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Solucion:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="88" y="209" width="399" height="59" uuid="e9ce769e-74f2-47f4-9ba5-0d84dd60b77d"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solucionincidente_Reg_Solucion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="4" y="285" width="75" height="20" forecolor="#000000" uuid="132248ab-b3d9-423a-8f95-70b990090c51"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Comenarios:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="88" y="285" width="399" height="59" uuid="8bf2a5f1-0287-462b-8e66-bee4f4f479e4"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solucionincidente_Comentarios}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="383" y="29" width="81" height="20" forecolor="#000000" uuid="ce213507-4a2e-4935-aa78-36691a0e6e80"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Tipo Daño:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="481" y="29" width="72" height="18" uuid="02e89836-6a7b-4df7-be7b-bdce2697eae6"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo_daño_Daño}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="4" y="164" width="549" height="1" uuid="dd24466a-9d10-4354-aee7-e7dc8442cd99"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="5a642314-805d-4f6b-a759-b489a0b62275"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="13" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="555" height="13" forecolor="#D0B48E" backcolor="#9DB1B8" uuid="27a9025a-0ced-4395-861e-17a2d0e0eecc"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="-1" width="40" height="13" forecolor="#FFFFFF" uuid="c6ae62ab-5a05-4c00-8ad5-6e0935b8bee8"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="-1" width="80" height="13" forecolor="#FFFFFF" uuid="ad89cdd1-2637-4fd0-9d49-45c82a83a134"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="0" width="197" height="13" forecolor="#FFFFFF" uuid="4727b16d-d4bd-4088-8018-acea28cca492"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

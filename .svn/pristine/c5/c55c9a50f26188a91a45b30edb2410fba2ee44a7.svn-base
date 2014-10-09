@@ -1,0 +1,169 @@
+.textarea 
+						{	
+							width: 550px; height: 150px;						
+						}
+.textarea:focus
+										{
+												border-color: blue;												
+											}
+.boton 
+					{
+						border-bottom: none; 
+						border-bottom-style: none; 
+						color: white; 
+						background-color: #149039;			
+						width: 89px; 
+						height: 30px;		
+						border-bottom-color: green; 
+						border-right-color: green;	
+						border: 0;
+						float: right;
+						z-index: 0;
+							}
+							
+	.boton1 
+					{
+						border-bottom: none; 
+						border-bottom-style: none; 
+						color: white; 
+						background-color: #149039;			
+						width: 89px; 
+						height: 30px;		
+						border-bottom-color: green; 
+						border-right-color: green;	
+						border: 0;
+						
+						z-index: 0;
+							}
+								
+  .boton2 
+					{
+						border-bottom: none; 
+						border-bottom-style: none; 
+						color: white; 
+						background-color: #149039;			
+						width: 150px; 
+						height: 30px;		
+						border-bottom-color: green; 
+						border-right-color: green;	
+						border: 0;
+						float: left;
+						z-index: 0;
+                                                font-size: 15px;
+							}                                                      
+							
+							
+/*inicio prueba animacion de acordeon */
+
+h1{
+			color: green;		
+		 }
+		 
+.mas
+			{
+				background-color: transparent;
+				padding: 5px;
+				display:none;			
+					}
+
+
+
+
+.areaconfig 
+								{
+										width: 550px; height: 25px;													
+									}			
+									
+									 	
+    	 	.imagen {
+    	 		float: right;
+    	 		position:relative;
+		margin-left: 0px;
+	padding: 0px;   	 		
+    	 		}
+    	 					 	 	.imagen1 {
+    	 		float: right;
+    	 		position:relative;
+		margin-left: 0px;
+	padding: 0px; 
+	display: none;  	 		
+    	 		}
+    	 					
+    	input:invalid {
+    border: 1px solid green;
+  }
+
+  /* Estilo por defecto */
+  input:valid {
+    border: 1px solid black;
+  }
+  
+  h2 {
+			color: green;		
+		 }
+		 
+		 li{
+			color: green;		
+		 }
+		 
+		 .lol 
+		 				{
+		 					float: right;
+		 					}
+		 					
+		 .logo 
+		 					{
+								width:150px;
+								height: 175px;		 	
+											
+		 						}			
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                  /***************************************************
+				       Mensajes 
+***************************************************/                                      
+                                        
+                                        
+                                        .info, .exito, .alerta, .error {
+       font-family:Arial, Helvetica, sans-serif; 
+       font-size:13px;
+       border: 1px solid;
+       margin: 10px 0px;
+       padding:15px 10px 15px 50px;
+       background-repeat: no-repeat;
+       background-position: 10px center;
+}
+.info {
+       color: #00529B;
+       background-color: #BDE5F8;
+       background-image: url('info.png');
+}
+.exito {
+       color: #4F8A10;
+       background-color: #DFF2BF;
+       background-image:url('exito.png');
+}
+.alerta {
+       color: #9F6000;
+       background-color: #FEEFB3;
+       background-image: url('alerta.png');
+}
+.error {
+       color: #D8000C;
+       background-color: #FFBABA;
+       background-image: url('error.png');
+}
+
+
+
+
+table {
+            color: green;
+            border-color: black;
+            
+        
+        }
+        
+      
